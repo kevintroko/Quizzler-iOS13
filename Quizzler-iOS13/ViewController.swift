@@ -18,10 +18,10 @@ class ViewController: UIViewController {
     
     var questionNumber = 0;
     
-    let quiz: [[String]] = [
-        ["Do giraffes sweat?", "True"],
-        ["Is there a place called Hakuna Matata in Kenia", "False"],
-        ["Sharks kill more people than Vending Machines every year", "False"]
+    let quiz = [
+        Question(text: "Do giraffes sweat?", answer: "True"),
+        Question(text: "Is there a place called Hakuna Matata in Kenia", answer: "False"),
+        Question(text: "Sharks kill more people than Vending Machines every year", answer: "False")
     ];
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         let userAnswer = sender.currentTitle;
-        let actualAnswer = quiz[questionNumber][1];
+        let actualAnswer = quiz[questionNumber].answer;
         
         if (userAnswer == actualAnswer) {
             print("Correrct");
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     
     func updateUI() {
         
-            questionLabel.text = quiz[questionNumber][0];
+        questionLabel.text = quiz[questionNumber].text;
        
     }
     
