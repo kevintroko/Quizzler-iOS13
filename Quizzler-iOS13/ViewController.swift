@@ -44,9 +44,9 @@ class ViewController: UIViewController {
         let actualAnswer = quiz[questionNumber].answer;
         
         if (userAnswer == actualAnswer) {
-            print("Correrct");
+            sender.backgroundColor = UIColor.green;
         } else {
-            print("Incorrect");
+            sender.backgroundColor = UIColor.red;
         }
         
         print(questionNumber, quiz.capacity);
@@ -57,13 +57,15 @@ class ViewController: UIViewController {
             questionNumber = 0;
         }
         
-        updateUI();
-        
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false);
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         
         questionLabel.text = quiz[questionNumber].text;
+        
+        trueButton.backgroundColor = UIColor.clear;
+        falseButton.backgroundColor = UIColor.clear;
        
     }
     
